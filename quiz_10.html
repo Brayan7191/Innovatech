@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <header>
+    </header>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz de Arte</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0e6f6;
+            color: #4b0082;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-size: 13px;
+        }
+
+        .quiz-container {
+            width: 80%;
+            max-width:auto;
+            background-color: #e6d4f0;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+            max-height: 90vh;
+        }
+
+        .question {
+            margin-bottom: 15px;
+        }
+
+        .question h3 {
+            margin: 0 0 10px;
+        }
+
+        .options {
+            display: flex;
+            justify-content: space-between;
+
+        }
+
+        .option-button {
+            background-color: #7e797e;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+            flex-grow: 1;
+            margin: 0 5px;
+            transition: background-color 0.3s;
+        }
+
+        .option-button:hover {
+            background-color: #6a0dad;
+        }
+
+        .option-button:active {
+            background-color: #4b0082;
+        }
+
+        .option-button.correct {
+            background-color: rgb(50, 201, 20);
+        }
+
+        .option-button.incorrect {
+            background-color: #bd3017;
+        }
+
+        #result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #dcdcdc;
+            border-radius: 5px;
+            text-align: center;
+            display: none;
+        }
+        h3{
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <!-- Pregunta 1 -->
+        <div class="question">
+            <h3>Pregunta 1: ¿Qué es la tecnología blanda?</h3>
+            <div class="options">
+                <button class="option-button" onclick="checkAnswer(this, 1)">Herramientas físicas como automóviles y smartphones. </button>
+                <button class="option-button" onclick="checkAnswer(this, 1)"> Dispositivos utilizados en la producción industrial.</button>
+                <button class="option-button" onclick="checkAnswer(this, 1)">Conocimientos y habilidades intangibles para desarrollar productos y servicios.  </button>
+            </div>
+        </div>
+
+        <!-- Pregunta 2 -->
+        <div class="question">
+            <h3>Pregunta 2: ¿Cuál es el equivalente en inglés de "tecnología blanda"?</h3>
+            <div class="options">
+                <button class="option-button" onclick="checkAnswer(this, 2)">Hard skills.</button>
+                <button class="option-button" onclick="checkAnswer(this, 2)">Know how.</button>
+                <button class="option-button" onclick="checkAnswer(this, 2)">Soft tools.</button>
+            </div>
+        </div>
+
+        <!-- Pregunta 3 -->
+        <div class="question">
+            <h3>Pregunta 3: ¿Cuál es el objetivo principal de la tecnología blanda?</h3>
+            <div class="options">
+                <button class="option-button" onclick="checkAnswer(this, 3)">Optimizar los recursos y procesos en organizaciones.</button>
+                <button class="option-button" onclick="checkAnswer(this, 3)"> Crear dispositivos electrónicos.</button>
+                <button class="option-button" onclick="checkAnswer(this, 3)">Diseñar automóviles y maquinaria.</button>
+            </div>
+        </div>
+
+        <!-- Pregunta 4 -->
+        <div class="question">
+            <h3>Pregunta 4: ¿Qué parte del ámbito científico corresponde a la tecnología blanda?</h3>
+            <div class="options">
+                <button class="option-button" onclick="checkAnswer(this, 4)">Parte tangible</button>
+                <button class="option-button" onclick="checkAnswer(this, 4)">Parte intangible.</button>
+                <button class="option-button" onclick="checkAnswer(this, 4)">Solo la parte física.</button>
+            </div>
+        </div>
+
+        <!-- Pregunta 5 -->
+        <div class="question">
+            <h3>Pregunta 5: ¿Cómo se relacionan la tecnología blanda y la tecnología dura?</h3>
+            <div class="options">
+                <button class="option-button" onclick="checkAnswer(this, 5)">La tecnología dura no podría existir sin la blanda.</button>
+                <button class="option-button" onclick="checkAnswer(this, 5)"> Son completamente independientes.</button>
+                <button class="option-button" onclick="checkAnswer(this, 5)"> La blanda depende de la dura.</button>
+            </div>
+        </div>
+
+        <!-- Pregunta 6 -->
+        <div class="question">
+            <h3>Pregunta 6: ¿En qué ámbitos se puede aplicar la tecnología blanda?</h3>
+            <div class="options">
+                <button class="option-button" onclick="checkAnswer(this, 6)">Solo en el sector industrial.</button>
+                <button class="option-button" onclick="checkAnswer(this, 6)">En ámbitos diversos como empresas, gobiernos y educación.</button>
+                <button class="option-button" onclick="checkAnswer(this, 6)">Solo en tecnología de consumo.</button>
+            </div>
+        </div>
+
+        <!-- Pregunta 7 -->
+        <div class="question">
+            <h3>Pregunta 7: ¿Qué permiten las tecnologías blandas en las organizaciones?</h3>
+            <div class="options">
+                <button class="option-button" onclick="checkAnswer(this, 7)">Optimizar procesos productivos y recursos humanos.</button>
+                <button class="option-button" onclick="checkAnswer(this, 7)">Crear nuevas máquinas.</button>
+                <button class="option-button" onclick="checkAnswer(this, 7)"> Producir bienes físicos.</button>
+            </div>
+        </div>
+
+        <!-- Pregunta 8 -->
+        <div class="question">
+            <h3>Pregunta 8: ¿Qué tipo de tecnología es tangible y material?</h3>
+            <div class="options">
+                <button class="option-button" onclick="checkAnswer(this, 8)">Tecnología dura.</button>
+                <button class="option-button" onclick="checkAnswer(this, 8)">Tecnología blanda.</button>
+                <button class="option-button" onclick="checkAnswer(this, 8)"> Ninguna de las dos.</button>
+            </div>
+        </div>
+
+        <!-- Pregunta 9 -->
+        <div class="question">
+            <h3>Pregunta 9: ¿Qué se necesita para que la tecnología dura sea posible?</h3>
+            <div class="options">
+                <button class="option-button" onclick="checkAnswer(this, 9)"> Herramientas físicas únicamente.</button>
+                <button class="option-button" onclick="checkAnswer(this, 9)"> Conocimientos previos de tecnología blanda.</button>
+                <button class="option-button" onclick="checkAnswer(this, 9)"> Solo maquinaria avanzada.</button>
+            </div>
+        </div>
+
+        <!-- Pregunta 10 -->
+        <div class="question">
+            <h3>Pregunta 10: ¿Pueden las tecnologías blandas aplicarse en contextos políticos?</h3>
+            <div class="options">
+                <button class="option-button" onclick="checkAnswer(this, 10)"> Sí, para organizar procesos y aprovechar recursos.</button>
+                <button class="option-button" onclick="checkAnswer(this, 10)"> No, solo en empresas.</button>
+                <button class="option-button" onclick="checkAnswer(this, 10)"> Solo en la industria tecnológica.</button>
+            </div>
+        </div>
+
+         <!-- Pregunta 11 -->
+         <div class="question">
+            <h3>Pregunta 11: ¿Qué se entiende por tecnología?</h3>
+            <div class="options">
+                <button class="option-button" onclick="checkAnswer(this, 11)"> Es el conjunto de conocimientos científicos utilizados para lograr un objetivo preciso.</button>
+                <button class="option-button" onclick="checkAnswer(this, 11)">Es un conjunto de herramientas manuales diseñadas para mejorar la vida.</button>
+                <button class="option-button" onclick="checkAnswer(this, 11)">Son técnicas relacionadas exclusivamente con el desarrollo de computadoras.</button>
+            </div>
+        </div>
+
+         <!-- Pregunta 12 -->
+         <div class="question">
+            <h3>Pregunta 12: ¿Cuál es un ejemplo de tecnología flexible?</h3>
+            <div class="options">
+                <button class="option-button" onclick="checkAnswer(this, 12)">Un robot para ensamblar autos en una línea de producción.</button>
+                <button class="option-button" onclick="checkAnswer(this, 12)">Veneno para ratas.</button>
+                <button class="option-button" onclick="checkAnswer(this, 12)"> El microchip utilizado en teléfonos y computadoras.</button>
+            </div>
+        </div>
+
+        <!-- Pregunta 13 -->
+        <div class="question">
+            <h3>Pregunta 13: ¿Cuál es una característica de las tecnologías de punta?</h3>
+            <div class="options">
+                <button class="option-button" onclick="checkAnswer(this, 13)">Son tecnologías antiguas que ya no se usan. </button>
+                <button class="option-button" onclick="checkAnswer(this, 13)">Son las más avanzadas disponibles en un lugar y momento específico.</button>
+                <button class="option-button" onclick="checkAnswer(this, 13)"> Son tecnologías diseñadas para producir un solo producto.</button>
+            </div>
+        </div>
+
+        <!-- Pregunta 14 -->
+        <div class="question">
+            <h3>Pregunta 14: ¿Qué se desarrolló durante la Edad de los Metales?</h3>
+            <div class="options">
+                <button class="option-button" onclick="checkAnswer(this, 14)">El descubrimiento de la imprenta.</button>
+                <button class="option-button" onclick="checkAnswer(this, 14)">El paso del nomadismo al sedentarismo.</button>
+                <button class="option-button" onclick="checkAnswer(this, 14)">La creación de automóviles.</button>
+            </div>
+        </div>
+
+        <!-- Pregunta 15 -->
+        <div class="question">
+            <h3>Pregunta 15: ¿Qué es un ejemplo de tecnología de equipo?</h3>
+            <div class="options">
+                <button class="option-button" onclick="checkAnswer(this, 15)">Las herramientas utilizadas para fabricar un teléfono móvil.</button>
+                <button class="option-button" onclick="checkAnswer(this, 15)">El diseño de una impresora 3D.</button>
+                <button class="option-button" onclick="checkAnswer(this, 15)"> El desarrollo de un robot que realiza tareas repetitivas.</button>
+            </div>
+        </div>
+
+        <!-- Pregunta 16 -->
+        <div class="question">
+            <h3>Pregunta 16: ¿Qué tecnología se destacó durante la Revolución Industrial?</h3>
+            <div class="options">
+                <button class="option-button" onclick="checkAnswer(this, 16)">El avión.</button>
+                <button class="option-button" onclick="checkAnswer(this, 16)"> El teléfono móvil.</button>
+                <button class="option-button" onclick="checkAnswer(this, 16)"> La máquina de vapor.</button>
+            </div>
+        </div>
+
+        <!-- Pregunta 17 -->
+        <div class="question">
+            <h3>Pregunta 17: ¿Cuál fue uno de los inventos más importantes del Siglo XX?</h3>
+            <div class="options">
+                <button class="option-button" onclick="checkAnswer(this, 17)"> La máquina de escribir.</button>
+                <button class="option-button" onclick="checkAnswer(this, 17)"> El computador.</button>
+                <button class="option-button" onclick="checkAnswer(this, 17)"> La brújula.</button>
+            </div>
+        </div>
+
+        <!-- Pregunta 18 -->
+        <div class="question">
+            <h3>Pregunta 18: ¿Cuál es un ejemplo de tecnología relacionada con la medicina?</h3>
+            <div class="options">
+                <button class="option-button" onclick="checkAnswer(this, 18)"> Las criptomonedas.</button>
+                <button class="option-button" onclick="checkAnswer(this, 18)"> Los vehículos autónomos.</button>
+                <button class="option-button" onclick="checkAnswer(this, 18)"> La biotecnología.</button>
+            </div>
+        </div>
+
+        <!-- Pregunta 19 -->
+        <div class="question">
+            <h3>Pregunta 19: ¿Cuál de las siguientes es una característica de la tecnología?</h3>
+            <div class="options">
+                <button class="option-button" onclick="checkAnswer(this, 19)">Siempre se mantiene igual con el paso del tiempo.</button>
+                <button class="option-button" onclick="checkAnswer(this, 19)"> Solo afecta el ámbito laboral.</button>
+                <button class="option-button" onclick="checkAnswer(this, 19)">Está sujeta a cambios que pueden ocurrir de manera discontinua.</button>
+            </div>
+        </div>
+
+        <!-- Pregunta 20 -->
+        <div class="question">
+            <h3>Pregunta 20: ¿Qué define la inteligencia artificial?</h3>
+            <div class="options">
+                <button class="option-button" onclick="checkAnswer(this, 20)">La creación de máquinas que imitan las funciones cognitivas de los humanos.</button>
+                <button class="option-button" onclick="checkAnswer(this, 20)"> La creación de objetos tridimensionales mediante la impresión de capas de material.</button>
+                <button class="option-button" onclick="checkAnswer(this, 20)"> La producción de vacunas mediante organismos vivos.
+                </button>
+            </div>
+        </div>
+        <br>
+        <br>
+        <!-- Mostrar resultados -->
+        <button onclick="showResults()" style="border-radius: 8px; border-color: #d9a5fd ; box-shadow: 3px 3px 3px #7e797e; background:linear-gradient(silver, white);" >Mostrar Resultados</button>
+        <div id="result"></div>
+        <br>
+        <br>
+        <center><a href="pagina principal para el proyecto.html"><button style="box-shadow:3px 3px 3px black ; color:rgb(72, 24, 168);" type="button" class="btn btn-outline-secondary"  class="p1">inicio <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
+            <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5"/>
+          </svg></button></a></center>
+          <br>
+          <p style="text-align: center;  color:black;">copyright Innovatech 2024</p>
+        
+    </div>
+<script>
+    // Respuestas correctas
+    const correctAnswers = [3, 2, 1, 2, 1, 2, 1, 1, 2, 1, 1, 3, 2, 2, 1, 3, 2, 3, 3, 1];
+    
+    // Almacenar las respuestas seleccionadas por el usuario
+    let userAnswers = new Array(correctAnswers.length).fill(null);
+    
+    // Verificar la respuesta
+    function checkAnswer(button, questionNumber) {
+        const questionIndex = questionNumber - 1;
+        const buttons = button.parentElement.querySelectorAll('.option-button');
+    
+        // Desactivar los botones después de seleccionar
+        buttons.forEach(btn => btn.disabled = true);
+    
+        // Verificar si la respuesta es correcta
+        const selectedOptionIndex = Array.from(buttons).indexOf(button) + 1;
+        userAnswers[questionIndex] = selectedOptionIndex; // Guardar la respuesta seleccionada
+    
+        if (selectedOptionIndex === correctAnswers[questionIndex]) {
+            button.classList.add('correct');
+        } else {
+            button.classList.add('incorrect');
+            buttons[correctAnswers[questionIndex] - 1].classList.add('correct'); // Mostrar la correcta
+        }
+    }
+    
+    // Mostrar los resultados
+    function showResults() {
+        // Contar cuántas respuestas del usuario coinciden con las respuestas correctas
+        let correctCount = userAnswers.filter((answer, index) => answer === correctAnswers[index]).length;
+        
+        document.getElementById('result').innerText = `Has acertado ${correctCount} de 20 preguntas.`;
+        document.getElementById('result').style.display = 'block';
+    }
+    </script>
+    <br>
+    <br>
+    
+</body>
+<footer>
+   
+</footer>
+</html>
